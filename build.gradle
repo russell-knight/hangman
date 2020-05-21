@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'org.rknigh22'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task(runClient, dependsOn: 'classes', type: JavaExec) {
+    main = 'org.rknigh22.Client'
+    classpath = sourceSets.main.runtimeClasspath
+    args 'localhost 12345'
+    systemProperty 'simple.message', 'Hello '
+}
